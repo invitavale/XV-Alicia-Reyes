@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alicia Reyes - Mis XV Años</title>
+    <meta name="theme-color" content="#FBF6EC">
+    <link rel="preload" as="image" href="intro-poster.jpg">
+    <link rel="preload" as="image" href="portada.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CCSB.css?v=alicia9">
+</head>
+<body>
+    <!-- Reproductor de música -->
+    <div id="musicPlayer" class="music-player" style="display: none;">
+        <button id="musicToggle" class="music-button" title="Reproducir/Pausar música" aria-label="Reproducir o pausar música">
+            <svg id="volumeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#3F5D82"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" stroke="#3F5D82" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+        </button>
+    </div>
+    <audio id="bgMusic" src="musica.mp3" preload="auto" loop playsinline></audio>
+
+    <!-- Pantalla de inicio: el video de la madriguera (en pausa hasta tocar) -->
+    <div id="introVideo" class="intro-video show">
+        <div class="intro-blur" aria-hidden="true"></div>
+        <video id="introPlayer" src="intro.mp4" poster="intro-poster.jpg" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video>
+        <div id="introGate" class="intro-gate">
+            <p class="gate-kicker">Mis XV Años</p>
+            <h1 class="gate-name">Alicia Reyes</h1>
+            <div class="gate-suits" aria-hidden="true">♠ <span>♥</span> ♣ <span>♦</span></div>
+            <button id="enterBtn" class="gate-btn" type="button">Entrar a la invitación</button>
+            <p class="gate-note">Sube el volumen y sigue al conejo blanco</p>
+        </div>
+        <button id="skipIntro" class="skip-intro" type="button">Saltar ›</button>
+    </div>
+
+    <!-- Transición de luz dorada al final del video -->
+    <div id="goldFlash" class="gold-flash" aria-hidden="true"></div>
+    <canvas id="sparkles" class="sparkles" aria-hidden="true"></canvas>
+
+    <!-- Portada -->
+    <header class="hero-section">
+        <img class="hero-bg" src="portada.jpg" alt="Portada Mis XV Años - Alicia Reyes">
+        <div class="scroll-indicator" aria-hidden="true">
+            <span>Desliza</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+    </header>
+
+    <main class="content">
+
+        <!-- Cuenta regresiva -->
+        <section class="section countdown-section">
+            <img src="deco-carta-corazon.webp" alt="" class="deco deco-card-left float-a">
+            <img src="deco-carta-pica.webp" alt="" class="deco deco-card-right float-b">
+            <img src="deco-reloj.webp" alt="Reloj de bolsillo" class="section-icon watch-icon swing">
+            <h2 class="label-caps">Faltan</h2>
+            <div class="gold-rule"><span>♥</span></div>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Días</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Segundos</div>
+                </div>
+            </div>
+            <p class="quote">Cada segundo nos acerca a la maravilla</p>
+        </section>
+
+        <div class="suit-divider" aria-hidden="true">
+            <span class="suit-pill"><img src="deco-pica.webp" alt=""><img src="deco-corazon.webp" alt=""><img src="deco-trebol.webp" alt=""></span>
+        </div>
+
+        <!-- Fecha y Lugar -->
+        <section class="section events-section">
+            <img src="deco-llave.webp" alt="" class="deco deco-key float-b">
+            <img src="deco-taza.webp" alt="" class="deco deco-teacup float-a">
+            <div class="event-card">
+                <span class="corner c-tl">♠</span><span class="corner c-tr">♥</span>
+                <span class="corner c-bl">♣</span><span class="corner c-br">♦</span>
+                <img src="deco-corona.webp" alt="Corona" class="section-icon crown-icon pulse">
+                <h3 class="script-title">Fiesta de XV Años</h3>
+                <div class="gold-rule"><span>♥</span></div>
+                <div class="event-details">
+                    <h4>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                        Día
+                    </h4>
+                    <p>Sábado 19 de Diciembre, 2026</p>
+                    <p class="event-time">6:30 pm</p>
+                    <p class="event-note">La recepción sigue a la bienvenida</p>
+                </div>
+                <div class="gold-rule small"><span>♦</span></div>
+                <div class="event-details">
+                    <h4>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                        Lugar
+                    </h4>
+                    <p>Club 2 de Julio</p>
+                    <p class="event-address">Frente al Parque Central<br>San Pedro de Macorís</p>
+                </div>
+                <button class="btn-alice" onclick="openLocation('reception')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="currentColor"/><circle cx="12" cy="9.5" r="2.5" fill="#3F5D82"/></svg>
+                    ¿Cómo llegar?
+                </button>
+            </div>
+        </section>
+
+        <div class="suit-divider" aria-hidden="true">
+            <span class="suit-pill"><img src="deco-pica.webp" alt=""><img src="deco-corazon.webp" alt=""><img src="deco-trebol.webp" alt=""></span>
+        </div>
+
+        <!-- Fiesta -->
+        <section class="section party-section">
+            <img src="deco-carta-pica.webp" alt="" class="deco deco-card-left2 float-b">
+            <img src="deco-carta-corazon.webp" alt="" class="deco deco-card-right2 float-a">
+            <h2 class="script-title">Detalles</h2>
+            <div class="gold-rule"><span>♣</span></div>
+            <p class="section-subtitle">Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
+
+            <div class="party-grid">
+                <div class="party-card">
+                    <img src="deco-sombrero.webp" alt="Sombrero" class="card-icon hat-icon">
+                    <h3>Código de Vestimenta</h3>
+                    <p>Formal</p>
+                    <button class="btn-alice" onclick="showDressCode()">Ver más</button>
+                </div>
+
+                <div class="party-card">
+                    <div class="card-icon camera-icon">
+                        <svg width="78" height="78" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="18" width="52" height="36" rx="6" fill="#3F5D82"/>
+                            <rect x="24" y="10" width="16" height="10" rx="2" fill="#3F5D82"/>
+                            <circle cx="32" cy="36" r="12" fill="#FBF6EC" stroke="#B8935A" stroke-width="2"/>
+                            <circle cx="32" cy="36" r="6" fill="#3F5D82"/>
+                            <path d="M47 23.5c-1.2-1.6-3.6-.6-3 1.2.4 1.2 3 3 3 3s2.6-1.8 3-3c.6-1.8-1.8-2.8-3-1.2z" fill="#B23A48"/>
+                        </svg>
+                    </div>
+                    <h3>Comparte tus Fotos</h3>
+                    <p>Ayúdanos a capturar cada momento, sube las fotos que tomes durante la fiesta.</p>
+                    <button class="btn-alice" onclick="sharePhotos()">Subir Fotos</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="suit-divider" aria-hidden="true">
+            <span class="suit-pill"><img src="deco-pica.webp" alt=""><img src="deco-corazon.webp" alt=""><img src="deco-trebol.webp" alt=""></span>
+        </div>
+
+        <!-- Regalos -->
+        <section class="section gifts-section">
+            <img src="deco-eat-me.webp" alt="" class="deco deco-eatme float-a">
+            <img src="deco-drink-me.webp" alt="" class="deco deco-drinkme float-b">
+            <h2 class="script-title">Regalos</h2>
+            <div class="gold-rule"><span>♦</span></div>
+            <img src="icono-regalo.webp" alt="Regalo" class="section-icon gift-icon bounce">
+            <p class="section-subtitle gift-text">Tu presencia es el único regalo que deseo. Que me acompañes en esta noche tan especial y seas parte de este sueño en el País de las Maravillas es lo más valioso para mí.</p>
+        </section>
+
+        <div class="suit-divider" aria-hidden="true">
+            <span class="suit-pill"><img src="deco-pica.webp" alt=""><img src="deco-corazon.webp" alt=""><img src="deco-trebol.webp" alt=""></span>
+        </div>
+
+        <!-- Confirmación -->
+        <section class="section rsvp-section">
+            <img src="deco-llave-corazon.webp" alt="" class="deco deco-heartkey float-b">
+            <h2 class="script-title">Confirma tu Asistencia</h2>
+            <div class="gold-rule"><span>♠</span></div>
+            <p class="section-subtitle">Por favor confirma tu asistencia a más tardar el 12 de Noviembre de 2026</p>
+            <img src="deco-conejo.webp" alt="Conejo blanco con reloj" class="section-icon rabbit-icon hop">
+            <p class="late-note">¡Es tarde, es tarde! No faltes a esta cita.</p>
+            <button class="btn-alice" onclick="confirmAttendance()">Confirmar Asistencia</button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="checker-band" aria-hidden="true"></div>
+            <div class="cat-stage" aria-hidden="true">
+                <img src="deco-gato.webp" alt="" class="footer-cat">
+                <span class="cat-shadow"></span>
+                <div class="cat-floor"></div>
+            </div>
+            <div class="footer-content">
+                <p>Con cariño,</p>
+                <h3>Alicia Reyes</h3>
+                <p class="footer-date">19 de Diciembre, 2026</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Modal Dress Code -->
+    <div id="dresscodeModal" class="modal-overlay" onclick="closeDressCodeModal(event)">
+        <div class="dresscode-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeDressCodeModal()" aria-label="Cerrar">&times;</button>
+            <img src="deco-sombrero.webp" alt="" class="modal-hat">
+            <h2 class="modal-title-dark">Código de Vestimenta</h2>
+            <p class="modal-text-dark"><strong>Formal</strong></p>
+            <p class="modal-text-dark" style="margin-top:.4rem;font-size:1rem;">No blanco · No amarillo · No rojo</p>
+            <div class="dresscode-colors">
+                <span class="color-dot" style="background:#ffffff;" title="No blanco"></span>
+                <span class="color-dot" style="background:#f4d03f;" title="No amarillo"></span>
+                <span class="color-dot" style="background:#e74c3c;" title="No rojo"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">
+        <div id="toastContent"></div>
+    </div>
+
+    <script>
+    (function() {
+        try {
+            if ('caches' in window) {
+                caches.keys().then(keys => keys.forEach(k => caches.delete(k))).catch(() => {});
+            }
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister())).catch(() => {});
+            }
+        } catch(e) {}
+    })();
+    </script>
+    <script src="JAVAB.js?v=alicia9" defer></script>
+</body>
+</html>
